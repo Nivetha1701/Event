@@ -54,7 +54,5 @@ public class EventService {
         pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
         return eventRepository.findAll(pageable);
     }
-    public List<Event> getUserEvents() {
-        return eventRepository.findByName();
-    }
+   
 }

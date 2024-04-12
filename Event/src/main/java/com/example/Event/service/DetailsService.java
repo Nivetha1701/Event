@@ -23,7 +23,7 @@ public class DetailsService {
         detailsRepository.save(details);
     }
 
-    public Details getDetailsById(Long id) {
+    public Details getDetailsById(int id) {
         Optional<Details> optionalDetails = detailsRepository.findById(id);
         return optionalDetails.orElse(null);
     }
@@ -32,8 +32,11 @@ public class DetailsService {
         detailsRepository.save(details);
     }
 
-    public void deleteDetails(Long id) {
+    public void deleteDetails(int id) {
         detailsRepository.deleteById(id);
     }
     
+     public List<Details> findByName(String eventName) {
+        return detailsRepository.findByName(eventName);
+    }
 }

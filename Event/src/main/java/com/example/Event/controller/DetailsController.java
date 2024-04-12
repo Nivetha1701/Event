@@ -25,18 +25,18 @@ public class DetailsController {
     }
 
     @GetMapping("/{id}")
-    public Details getDetailsById(@PathVariable Long id) {
+    public Details getDetailsById(@PathVariable int id) {
         return detailsService.getDetailsById(id);
     }
 
     @PutMapping("/{id}")
-    public void updateDetails(@PathVariable Long id, @RequestBody Details details) {
+    public void updateDetails(@PathVariable int id, @RequestBody Details details) {
         details.setId(id);
         detailsService.updateDetails(details);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteDetails(@PathVariable Long id) {
+    public void deleteDetails(@PathVariable int id) {
         detailsService.deleteDetails(id);
     }
 
