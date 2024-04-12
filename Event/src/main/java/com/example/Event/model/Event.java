@@ -1,9 +1,10 @@
 package com.example.Event.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Event {
@@ -15,8 +16,12 @@ public class Event {
     private String email;
     private String password;
 
-    // Constructors
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL) 
+    @JsonManagedReference// One-to-Many relationship
+    private List<Details> detailsList;
+
     public Event() {
+
     }
 
     public Event(String name, String email, String password) {
@@ -25,7 +30,6 @@ public class Event {
         this.password = password;
     }
 
-    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -57,4 +61,20 @@ public class Event {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public List<Details> getDetailsList() {
+        return detailsList;
+    }
+
+    public void setDetailsList(List<Details> detailsList) { 
+        this.detailsList = detailsList;
+    }
+
+    // public Details getDetails() {
+    //     return details;
+    // }
+
+    // public void setDetails(Details details) {
+    //     this.details = details;
+    // }
 }
